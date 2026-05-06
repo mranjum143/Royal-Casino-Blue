@@ -1,0 +1,21 @@
+{
+  "name": "Royal_Casino_Blue",
+  "version": "1.0.0",
+  "description": "All-in-One 15 Games Casino App with Auto-Bonus Logic",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "casino",
+    "teenpatti",
+    "dragontiger",
+    "earning-app"
+  ],
+  "author": "Ahmad Nafees Anjum",
+  "license": "Private",
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.x"
+  }
+}
