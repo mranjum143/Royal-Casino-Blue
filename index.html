@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Casino Blue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000814; color: white; font-family: sans-serif; }
+        .gold-text { color: #ffc300; }
+        .blue-bg { background-color: #001d3d; }
+        .casino-card { border: 1px solid #ffc300; border-radius: 15px; transition: 0.3s; }
+        .casino-card:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div id="loading-screen" class="fixed inset-0 flex flex-col items-center justify-center z-50 bg-[#000814]">
+        <div class="text-6xl mb-4">👑</div>
+        <h1 class="text-4xl font-bold gold-text">ROYAL CASINO</h1>
+        <h2 class="text-2xl text-blue-400 mb-8">BLUE</h2>
+        <div class="w-64 h-2 bg-gray-800 rounded-full overflow-hidden border border-yellow-500">
+            <div id="progress-bar" class="h-full bg-yellow-500 w-0 transition-all"></div>
+        </div>
+        <p class="mt-2 text-sm text-gray-500">Loading Assets... <span id="progress-text">0%</span></p>
+    </div>
+
+    <div id="main-dashboard" class="hidden min-h-screen pb-20">
+        <header class="p-4 bg-[#000814] flex justify-between items-center border-b-2 border-yellow-500">
+            <h1 class="text-xl font-bold gold-text">Royal Casino Blue</h1>
+            <div class="bg-[#003566] px-4 py-1 rounded-full border border-yellow-500">
+                <span class="gold-text font-bold">₨ <span id="user-balance">70.00</span></span>
+            </div>
+        </header>
+
+        <div class="p-6 grid grid-cols-2 gap-4">
+            <div onclick="openGame('Dragon vs Tiger')" class="casino-card blue-bg h-32 flex items-center justify-center font-bold text-center p-2">Dragon vs Tiger</div>
+            <div onclick="openGame('Mines')" class="casino-card blue-bg h-32 flex items-center justify-center font-bold text-center p-2">Mines</div>
+            <div onclick="openGame('Teen Patti')" class="casino-card blue-bg h-32 flex items-center justify-center font-bold text-center p-2">Teen Patti</div>
+            <div onclick="openGame('Roulette')" class="casino-card blue-bg h-32 flex items-center justify-center font-bold text-center p-2">Roulette</div>
+        </div>
+
+        <div class="m-6 p-4 bg-yellow-500 rounded-lg text-black text-center font-bold">
+            Get ₨ 77 Bonus on 1st Deposit!
+        </div>
+
+        <div class="fixed bottom-0 w-full bg-[#000814] p-4 flex justify-around border-t border-gray-800">
+            <button onclick="showSection('deposit')" class="bg-green-600 px-6 py-2 rounded-lg font-bold">Deposit</button>
+            <button onclick="alert('Minimum 500rs required')" class="bg-gray-700 px-6 py-2 rounded-lg font-bold">Withdraw</button>
+        </div>
+    </div>
+
+    <script>
+        // Loading Logic
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.floor(Math.random() * 10) + 2;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(progressInterval);
+                setTimeout(() => {
+                    document.getElementById('loading-screen').classList.add('hidden');
+                    document.getElementById('main-dashboard').classList.remove('hidden');
+                }, 500);
+            }
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').innerText = progress + '%';
+        }, 100);
+
+        function openGame(name) {
+            alert("Opening " + name + "... Prepare your bet!");
+        }
+
+        function showSection(section) {
+            if(section === 'deposit') {
+                window.location.href = "https://jazzcash.com.pk"; // عارضی لنک
+                alert("Redirecting to JazzCash for Ahmad Nafees Anjum...");
+            }
+        }
+    </script>
+</body>
+</html>
